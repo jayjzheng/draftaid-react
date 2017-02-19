@@ -15,8 +15,6 @@ class DraftBoard extends Component {
     }
 
     draft(player) {
-      console.log('draft', player.name);
-
       const players = this.state.players.slice();
       const index = players.indexOf(player);
       if (~index) {
@@ -30,7 +28,9 @@ class DraftBoard extends Component {
     }
 
     undo(currentDraft) {
-      console.log('undo');
+      if(currentDraft === 0) {
+        return
+      }
 
       const players = this.state.players.slice();
       const index = players.findIndex(p => p.drafted === currentDraft);
@@ -45,8 +45,6 @@ class DraftBoard extends Component {
     }
 
     reset() {
-      console.log('reset');
-
       const players = this.state.players.slice();
       players.map((player, i) => {
           return player.drafted = null;
@@ -63,7 +61,6 @@ class DraftBoard extends Component {
         <div className="draft-board">
           <Undrafted
             fields={['rank', 'tier', 'position', 'name', 'team', 'bye_week']}
-            position='WR'
             players={ this.state.players }
             size={10}
             draft={ (p) => this.draft(p) }
@@ -74,7 +71,7 @@ class DraftBoard extends Component {
             position='WR'
             currentDraft={ this.state.currentDraft }
             players={ this.state.players }
-            undo={ (cd) => this.undo(cd) }
+            undo={ (c) => this.undo(c) }
             reset={ () => this.reset() }
           />
         </div>

@@ -10,7 +10,7 @@ class PlayerTable extends PureComponent {
 
     return players.map((player, i) => {
       return (
-        <tr key={i} onClick={() => this.onClick(player)}>
+        <tr key={i} className='pointer' onClick={() => this.onClick(player)}>
           {this.columns(player)}
         </tr>
       )
