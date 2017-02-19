@@ -3,15 +3,15 @@ import React from 'react';
 function PlayerList(props) {
     let filtered;
     if (props.position) {
-        filtered = props.players.filter(p => p.position.includes(props.position));
+        filtered = props.players.filter(p => p.position.includes(props.position) && !p.drafted);
     } else {
-        filtered = props.players;
+        filtered = props.players.filter(p => !p.drafted);
     }
 
     const sorted = filtered.sort((a, b) => a.rank - b.rank);
     const players = sorted.map((player, i) => {
       return (
-        <tr key={i}>
+        <tr key={i} onClick={() => props.onClick(player)}>
             <td>{player.rank}</td>
             <td>Tier {player.tier}</td>
             <td>{player.position}</td>
