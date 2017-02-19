@@ -2,18 +2,13 @@ import React, { Component } from 'react';
 
 import PlayerList from './PlayerList'
 import Drafted from './Drafted'
+import rankings from '../public/rankings.json';
 
 class DraftBoard extends Component {
     constructor() {
         super();
         this.state = {
-            players: [
-                { position: "RB1", name: "Todd Gurley", team: "LA", rank: 4, tier: 1, bye_week: 8 },
-                { position: "WR2", name: "Odell Beckham Jr.", team: "NYG", rank: 2, tier: 1, bye_week: 8 },
-                { position: "WR1", name: "Antonio Brown", team: "PIT", rank: 1, tier: 1, bye_week: 8 },
-                { position: "WR3", name: "Julio Jones", team: "ATL", rank: 3, tier: 1, bye_week: 11  },
-                { position: "RB2", name: "David Johnson", team: "ARI", rank: 5, tier: 1, bye_week: 9  },
-            ],
+            players: rankings.players,
             currentDraft: 0,
         };
     }
