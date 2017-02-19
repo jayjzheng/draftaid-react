@@ -23,7 +23,7 @@ function Undrafted(props) {
     });
 
     return (
-        <table>
+        <table className='table'>
             <tbody>{players}</tbody>
         </table>
     );
