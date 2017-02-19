@@ -17,6 +17,7 @@ function Drafted(props) {
     return (
         <div>
             <button onClick={()=>props.undo(props.currentDraft)}>Undo</button>
+            <button onClick={()=>props.reset()}>Reset</button>
             <table>
                 <tbody>{players}</tbody>
             </table>

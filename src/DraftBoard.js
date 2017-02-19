@@ -44,6 +44,18 @@ class DraftBoard extends Component {
         });
     }
 
+    reset() {
+        const players = this.state.players.slice();
+        players.map((player, i) => {
+            return player.drafted = null;
+        });
+
+        this.setState({
+            currentDraft: 0,
+            players: players,
+        });
+    }
+
     render() {
         return (
             <div className="draft-board">
@@ -57,7 +69,12 @@ class DraftBoard extends Component {
                 <hr />
                 <PlayerList players={this.state.players} position="TE" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <Drafted players={this.state.players} currentDraft={this.state.currentDraft} undo={(cd)=>this.undo(cd)}/>
+                <Drafted
+                    players={this.state.players}
+                    currentDraft={this.state.currentDraft}
+                    undo={ (cd) => this.undo(cd) }
+                    reset={ () => this.reset() }
+                    />
             </div>
         );
     }
