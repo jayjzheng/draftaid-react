@@ -31,20 +31,33 @@ class DraftBoard extends Component {
         });
     }
 
+    undo(currentDraft) {
+        const players = this.state.players.slice();
+        const index = players.findIndex(p => p.drafted === currentDraft);
+        if (~index) {
+            players[index].drafted = null;
+        }
+
+        this.setState({
+            currentDraft: this.state.currentDraft - 1,
+            players: players,
+        });
+    }
+
     render() {
         return (
             <div className="draft-board">
-                <PlayerList players={this.state.players} onClick={(p) => this.draft(p)} />
+                <PlayerList players={this.state.players} onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="RB" onClick={(p) => this.draft(p)} />
+                <PlayerList players={this.state.players} position="RB" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="WR" onClick={(p) => this.draft(p)} />
+                <PlayerList players={this.state.players} position="WR" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="QB" onClick={(p) => this.draft(p)} />
+                <PlayerList players={this.state.players} position="QB" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="TE" onClick={(p) => this.draft(p)} />
+                <PlayerList players={this.state.players} position="TE" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <Drafted players={this.state.players} />
+                <Drafted players={this.state.players} currentDraft={this.state.currentDraft} undo={(cd)=>this.undo(cd)}/>
             </div>
         );
     }
