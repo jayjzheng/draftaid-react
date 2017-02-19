@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PlayerList(props) {
+function Undrafted(props) {
     let filtered;
     if (props.position) {
         filtered = props.players.filter(p => p.position.includes(props.position) && !p.drafted);
@@ -23,12 +23,10 @@ function PlayerList(props) {
     });
 
     return (
-        <div>
-            <table>
-                <tbody>{players}</tbody>
-            </table>
-        </div>
+        <table>
+            <tbody>{players}</tbody>
+        </table>
     );
 }
 
-export default PlayerList
+export default Undrafted

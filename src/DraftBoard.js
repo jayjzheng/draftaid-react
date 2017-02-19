@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PlayerList from './PlayerList'
+import Undrafted from './Undrafted'
 import Drafted from './Drafted'
 import rankings from '../public/rankings.json';
 
@@ -54,15 +54,15 @@ class DraftBoard extends Component {
     render() {
         return (
             <div className="draft-board">
-                <PlayerList players={this.state.players} onClick={(p)=>this.draft(p)} />
+                <Undrafted players={this.state.players} onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="RB" onClick={(p)=>this.draft(p)} />
+                <Undrafted players={this.state.players} position="RB" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="WR" onClick={(p)=>this.draft(p)} />
+                <Undrafted players={this.state.players} position="WR" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="QB" onClick={(p)=>this.draft(p)} />
+                <Undrafted players={this.state.players} position="QB" onClick={(p)=>this.draft(p)} />
                 <hr />
-                <PlayerList players={this.state.players} position="TE" onClick={(p)=>this.draft(p)} />
+                <Undrafted players={this.state.players} position="TE" onClick={(p)=>this.draft(p)} />
                 <hr />
                 <Drafted
                     players={this.state.players}
