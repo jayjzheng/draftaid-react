@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import Undrafted from './Undrafted'
+import UndraftedAll from './UndraftedAll'
+import UndraftedPositions from './UndraftedPositions'
 import Drafted from './Drafted'
+
 import rankings from '../public/rankings.json';
 
 class DraftBoard extends Component {
@@ -58,21 +60,16 @@ class DraftBoard extends Component {
 
     render() {
       return (
-        <div className="draft-board">
-          <Undrafted
-            fields={['rank', 'tier', 'position', 'name', 'team', 'bye_week']}
-            players={ this.state.players }
-            size={10}
-            draft={ (p) => this.draft(p) }
-          />
-
+        <div className='row'>
+          <UndraftedAll players={ this.state.players } draft={(p) => this.draft(p)} />
+          <UndraftedPositions players={ this.state.players } draft={(p) => this.draft(p)} />
           <Drafted
-            fields={['drafted', 'name', 'position', 'team']}
-            position='WR'
-            currentDraft={ this.state.currentDraft }
-            players={ this.state.players }
-            undo={ (c) => this.undo(c) }
-            reset={ () => this.reset() }
+              fields={['drafted', 'name', 'position', 'team']}
+              position='WR'
+              currentDraft={ this.state.currentDraft }
+              players={ this.state.players }
+              undo={ (c) => this.undo(c) }
+              reset={ () => this.reset() }
           />
         </div>
       );

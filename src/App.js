@@ -7,15 +7,15 @@ import Footer from './Footer'
 import DraftBoard from './DraftBoard'
 
 class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <Header />
-                <DraftBoard />
-                <Footer />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div id="main" className="container-fluid clear-top">
+        <Header />
+        <DraftBoard />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
