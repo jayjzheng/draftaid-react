@@ -37,4 +37,11 @@ function Drafted(props) {
   );
 }
 
+Drafted.propTypes = {
+  currentDraft: React.PropTypes.number.isRequired,
+  reset: React.PropTypes.func.isRequired,
+  undo: React.PropTypes.func.isRequired,
+  players: React.PropTypes.array.isRequired,
+};
+
 export default Drafted

@@ -63,4 +63,13 @@ class PlayerTable extends PureComponent {
   }
 }
 
+PlayerTable.propTypes = {
+  players: React.PropTypes.array.isRequired,
+  fields: React.PropTypes.array.isRequired,
+
+  onClick: React.PropTypes.func,
+  size: React.PropTypes.number,
+  disableColor: React.PropTypes.bool,
+};
+
 export default PlayerTable

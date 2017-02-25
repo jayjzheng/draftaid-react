@@ -56,4 +56,9 @@ function UndraftedPositions(props) {
   )
 }
 
+UndraftedPositions.propTypes = {
+  draft: React.PropTypes.func.isRequired,
+  players: React.PropTypes.array.isRequired,
+};
+
 export default UndraftedPositions

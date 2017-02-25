@@ -30,4 +30,9 @@ function UndraftedAll(props) {
   )
 }
 
+UndraftedAll.propTypes = {
+  draft: React.PropTypes.func.isRequired,
+  players: React.PropTypes.array.isRequired,
+};
+
 export default UndraftedAll

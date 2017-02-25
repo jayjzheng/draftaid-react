@@ -21,4 +21,14 @@ function Undrafted(props) {
   );
 }
 
+
+Undrafted.propTypes = {
+  draft: React.PropTypes.func.isRequired,
+  players: React.PropTypes.array.isRequired,
+  fields: React.PropTypes.array.isRequired,
+
+  size: React.PropTypes.number,
+  position: React.PropTypes.string,
+};
+
 export default Undrafted
