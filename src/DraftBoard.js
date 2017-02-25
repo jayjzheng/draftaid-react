@@ -64,8 +64,6 @@ class DraftBoard extends Component {
           <UndraftedAll players={ this.state.players } draft={(p) => this.draft(p)} />
           <UndraftedPositions players={ this.state.players } draft={(p) => this.draft(p)} />
           <Drafted
-              fields={['drafted', 'name', 'position', 'team']}
-              position='WR'
               currentDraft={ this.state.currentDraft }
               players={ this.state.players }
               undo={ (c) => this.undo(c) }

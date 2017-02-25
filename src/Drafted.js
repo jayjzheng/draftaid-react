@@ -12,21 +12,26 @@ function Drafted(props) {
         <i className='fa fa-history'></i> Draft History
       </div>
 
-      <button
-        className='btn btn-sm btn-info btn-responsive'
-        onClick={()=>props.undo(props.currentDraft)}>
-        <i className='fa fa-backward'></i> Undo
-      </button>
+      <div className="row form-group">
+        <div className="col-md-12">
+          <button
+            className='btn btn-sm btn-info btn-responsive'
+            onClick={()=>props.undo(props.currentDraft)}>
+            <i className='fa fa-backward'></i> Undo
+          </button>
 
-      <button
-        className='pull-right btn btn-sm btn-warning btn-responsive'
-        onClick={()=>props.reset()}>
-        <i className='fa fa-eject'></i> Reset
-      </button>
+          <button
+            className='pull-right btn btn-sm btn-warning btn-responsive'
+            onClick={()=>props.reset()}>
+            <i className='fa fa-eject'></i> Reset
+          </button>
+        </div>
+      </div>
 
       <PlayerTable
-        fields={props.fields}
+        fields={['drafted', 'name', 'position', 'team']}
         players={players}
+        disableColor={true}
       />
     </div>
   );
