@@ -15,4 +15,3 @@ it was bootstrapped with [Create React App](https://github.com/facebookincubator
 - Headers and footers
 - Tests
 - Better CSS
--
