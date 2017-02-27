@@ -61,8 +61,16 @@ class DraftBoard extends Component {
     render() {
       return (
         <div className='row'>
-          <UndraftedAll players={ this.state.players } draft={(p) => this.draft(p)} />
-          <UndraftedPositions players={ this.state.players } draft={(p) => this.draft(p)} />
+          <UndraftedAll
+            players={ this.state.players }
+            draft={(p) => this.draft(p)}
+          />
+
+          <UndraftedPositions
+            players={ this.state.players }
+            draft={(p) => this.draft(p)}
+          />
+
           <Drafted
               currentDraft={ this.state.currentDraft }
               players={ this.state.players }
