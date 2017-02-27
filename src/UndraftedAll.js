@@ -33,7 +33,11 @@ class UndraftedAll extends React.Component {
 
         <div className="row form-group">
           <div className="form-group col-md-4">
-            <select></select>
+            <select>
+              <option defaultValue value="standard">Standard</option>
+              <option value="ppr">PPR</option>
+              <option value="half">0.5 PPR</option>
+            </select>
           </div>
 
           <div className="col-md-8">
