@@ -10,10 +10,12 @@ class DraftBoard extends Component {
 
       this.state = {
           players: [],
+          filteredPlayers: [],
           isLoading: true,
           currentDraft: 0,
           fetchError: null,
           format: 'standard',
+          query: '',
       };
     }
 
@@ -31,8 +33,10 @@ class DraftBoard extends Component {
         response.json().then(function(res){
           self.setState({
             players: res.rankings,
+            filteredPlayers: res.rankings,
             isLoading: false,
             format: format,
+            query: '',
           });
         });
       }).catch(function(err) {
@@ -40,6 +44,17 @@ class DraftBoard extends Component {
           fetchError: err,
           isLoading: false,
         });
+      });
+    }
+
+    searchPlayers(query) {
+      let players = this.state.players.filter(player =>
+        player.name.toUpperCase().includes(query.toUpperCase())
+      );
+
+      this.setState({
+        filteredPlayers: players,
+        query: query,
       });
     }
 
@@ -53,6 +68,8 @@ class DraftBoard extends Component {
       this.setState({
           currentDraft: this.state.currentDraft + 1,
           players: players,
+          filteredPlayers: players,
+          query: '',
       });
     }
 
@@ -97,10 +114,12 @@ class DraftBoard extends Component {
       return (
         <div className='row'>
           <UndraftedAll
-            players={ this.state.players }
+            players={ this.state.filteredPlayers }
             draft={ (p) => this.draft(p) }
-            fetch={ (f) => this.fetchPlayers(f) }
+            fetch={ (e) => this.fetchPlayers(e.target.value) }
+            search={ (e) => this.searchPlayers(e.target.value) }
             format={ this.state.format }
+            query={ this.state.query }
           />
 
           <UndraftedPositions
