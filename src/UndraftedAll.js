@@ -11,6 +11,7 @@ class UndraftedAll extends React.Component {
     };
 
     this.search = this.search.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   search(event) {
@@ -24,6 +25,13 @@ class UndraftedAll extends React.Component {
     });
   }
 
+  handleSelect(event) {
+    this.props.fetch(event.target.value);
+    this.setState({
+      players: this.props.players,
+    })
+  }
+
   render() {
     return (
       <div className='col-md-3 col-sm-12 col-xs-12'>
@@ -33,10 +41,10 @@ class UndraftedAll extends React.Component {
 
         <div className="row form-group">
           <div className="form-group col-md-4">
-            <select>
-              <option defaultValue value="standard">Standard</option>
+            <select value={ this.props.format } onChange={ this.handleSelect } >
+              <option value="standard">Standard</option>
               <option value="ppr">PPR</option>
-              <option value="half">0.5 PPR</option>
+              <option value="half_ppr">0.5 PPR</option>
             </select>
           </div>
 

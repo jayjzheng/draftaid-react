@@ -4,16 +4,43 @@ import UndraftedAll from './UndraftedAll'
 import UndraftedPositions from './UndraftedPositions'
 import Drafted from './Drafted'
 
-import rankings from '../public/rankings.json';
-
 class DraftBoard extends Component {
     constructor() {
       super();
 
       this.state = {
-          players: rankings.players,
+          players: [],
+          isLoading: true,
           currentDraft: 0,
+          fetchError: null,
+          format: 'standard',
       };
+    }
+
+    componentDidMount() {
+      this.fetchPlayers(this.state.format);
+    }
+
+    fetchPlayers(format) {
+      const url = 'https://draftaid-api.herokuapp.com/rankings';
+      const self = this;
+
+      fetch(url+'?format='+format, {
+        method: 'get'
+      }).then(function(response) {
+        response.json().then(function(res){
+          self.setState({
+            players: res.rankings,
+            isLoading: false,
+            format: format,
+          });
+        });
+      }).catch(function(err) {
+        self.setState({
+          fetchError: err,
+          isLoading: false,
+        });
+      });
     }
 
     draft(player) {
@@ -59,11 +86,21 @@ class DraftBoard extends Component {
     }
 
     render() {
+      if (this.state.isLoading) {
+        return (<div className='row'>Loading...</div>)
+      }
+
+      if (this.state.fetchError) {
+        return (<div className='row'>error fetching rankings...</div>)
+      }
+
       return (
         <div className='row'>
           <UndraftedAll
             players={ this.state.players }
-            draft={(p) => this.draft(p)}
+            draft={ (p) => this.draft(p) }
+            fetch={ (f) => this.fetchPlayers(f) }
+            format={ this.state.format }
           />
 
           <UndraftedPositions
