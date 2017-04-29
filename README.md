@@ -10,8 +10,6 @@ it was bootstrapped with [Create React App](https://github.com/facebookincubator
 - Test: `npm test`
 
 ## TODOs
-- API calls to get player rankings
 - Local Storage
-- Headers and footers
 - Tests
 - Better CSS
