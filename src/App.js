@@ -12,7 +12,6 @@ class App extends Component {
       <div id="main" className="container-fluid clear-top">
         <Header />
         <DraftBoard />
-        <Footer />
       </div>
     );
   }
