@@ -2,6 +2,7 @@
   "name": "draftaid",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jayzheng.com/ff",
   "devDependencies": {
     "react-scripts": "0.9.0"
   },

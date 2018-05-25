@@ -24,7 +24,8 @@ class DraftBoard extends Component {
     }
 
     fetchPlayers(format) {
-      const url = 'https://draftaid-api.herokuapp.com/rankings';
+      // const url = 'https://draftaid-api.herokuapp.com/rankings';
+      const url = 'https://jayzheng-ff-api.herokuapp.com/rankings';
       const self = this;
 
       fetch(url+'?format='+format, {
