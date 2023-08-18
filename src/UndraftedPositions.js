@@ -3,14 +3,15 @@ import React from 'react';
 import Undrafted from './Undrafted'
 
 function UndraftedPositions(props) {
-  const fields = ['tier', 'name', 'team'];
+  const fields = ['rank', 'fpts','diff', 'position', 'name', 'team'];
 
   return (
     <div className='col-md-6 col-sm-12 hidden-xs'>
+        <div>Current Pick:{props.currentPick+1} Next Pick:{props.nextPick} Pick After:{props.pickAfter} All Picks: {props.picks.toString()}</div>
+        <br />
       <div className='aid-title'>
         <i className='fa fa-signal'></i> Top Picks By Position
       </div>
-
       <div className='col-sm-6'>
         <span className="col-sm-12 position-title">Runningbacks</span>
         <Undrafted
